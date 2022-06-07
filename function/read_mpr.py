@@ -14,7 +14,7 @@
 from galvani import BioLogic
 import pandas as pd
 import os
-
+import re
 
 # In[16]:
 
@@ -62,6 +62,33 @@ def mpr_pandas(datapath):
     return dfs
 
 
-
+def filename_read(path):
+    
+    index  = ['Cell Nr',
+              'Phase Type',
+              'Current/μA',
+              'Temperature/℃',
+              'Relative Humidity/%',
+              'Cycle Nr',
+              'Technique Step',
+              'Technique Type',
+              'Channel Nr'
+                ]
+    frame = pd.DataFrame(columns = index)
+    for i in path:
+        info = i.split('_')
+        value = []
+        value.append(re.sub('\D','',info[0]))#cell Nr
+        value.append(info[1])#Phase Type
+        value.append(re.sub('\D','',info[2]))#current
+        value.append(re.sub('\D','',info[3]))#Temperature
+        value.append(re.sub('\D','',info[4]))#Relative Humidity
+        value.append(re.sub('Cycle','',info[5]))#Cycle number
+        value.append(info[6])#Technique Step
+        value.append(info[7])#Technique Type
+        value.append(re.sub('\D','',info[8]))#Channel Nr
+        frame.loc[len(frame)] = value
+    
+    return frame
 
 
