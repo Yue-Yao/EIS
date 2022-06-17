@@ -9,8 +9,8 @@
         <LegendStyle Visible="true" Transparency="0" Dock="true" DockPosition="2" PositionX="78" PositionY="78" BackColor="16777215" FontName="Arial" FontSize="8" FontStyle="0"/>
         <GraphUnits Use_unit_time="false" Unit_time="3" Use_unit_E="false" Unit_E="0" Use_unit_I="false" Unit_I="1" Unit_I_div="0" Use_unit_Q="false" Unit_Q="1" Unit_Q_div="0" Use_unit_freq="false" Unit_freq="2" Use_unit_R="false" Unit_R="2" Unit_R_div="0" Use_unit_W="false" Unit_W="0" Unit_W_div="0" Use_unit_energy="false" Unit_energy="1" Unit_energy_div="0" CvtPotToRef2="false" Ref2Indx="0" Use_unit_capacity="false" Unit_capacity="2" Unit_capacity_div="0"/>
         <AxesStyle>
-          <AxisStyle Axis="x-axis" Name="" ShortName="" DrawGrid="true" AxisEnabled="true" GridColor="12632256" GridStyle="0" Title="time/s" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="0" ScientNotation="false" Min="-850,237443905193" Max="131085,281805792" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
-          <AxisStyle Axis="y1-axis" Name="" ShortName="" DrawGrid="true" AxisEnabled="true" GridColor="12632256" GridStyle="0" Title="Ecell/V" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="255" ScientNotation="false" Min="-0,212449518740177" Max="2,45119105070829" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
+          <AxisStyle Axis="x-axis" Name="" ShortName="" DrawGrid="true" AxisEnabled="true" GridColor="12632256" GridStyle="0" Title="time/s" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="0" ScientNotation="false" Min="-19946,4274034315" Max="1701347,9246211" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
+          <AxisStyle Axis="y1-axis" Name="" ShortName="" DrawGrid="true" AxisEnabled="true" GridColor="12632256" GridStyle="0" Title="(Q-Qo)/mA.h" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="255" ScientNotation="false" Min="-0,365276640038323" Max="0,481255249158205" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
           <AxisStyle Axis="y2-axis" Name="" ShortName="" DrawGrid="false" AxisEnabled="false" GridColor="12632256" GridStyle="0" Title="&lt;I&gt;/mA" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="8388736" ScientNotation="false" Min="1" Max="10" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
         </AxesStyle>
         <TracesStyle>
@@ -144,7 +144,7 @@
           <Trace Num="128" FastDisplay="false" UnderSampling="false" LineColor="255" DrawLines="false" LineStyle="0" LineSize="1" DrawPoints="true" PointsStyle="5" PointsSize="2" PointsTransparency="0" HollowPoints="false" PointsColor="32768"/>
         </TracesStyle>
         <TracesParams>
-          <Trace Num="1" FileName="" Title="" X-unit="4" Y-unit="6" Y2Axis="false" frequency="0" HLightSel="0" HLightNum="0"/>
+          <Trace Num="1" FileName="" Title="" X-unit="4" Y-unit="13" Y2Axis="false" frequency="0" HLightSel="0" HLightNum="0"/>
           <Trace Num="2" FileName="" Title="" X-unit="0" Y-unit="0" Y2Axis="false" frequency="0" HLightSel="0" HLightNum="0"/>
           <Trace Num="3" FileName="" Title="" X-unit="0" Y-unit="0" Y2Axis="false" frequency="0" HLightSel="0" HLightNum="0"/>
           <Trace Num="4" FileName="" Title="" X-unit="0" Y-unit="0" Y2Axis="false" frequency="0" HLightSel="0" HLightNum="0"/>
