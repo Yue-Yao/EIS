@@ -6,7 +6,7 @@
       <Graph Num="1">
         <GraphStyle HideOCVpts="false" XY1prop="false" GraphReprName="Markers style" GraphReprPredefined="true" BackColor="16777215" AxesFontName="Arial" AxesFontSize="8" ShowOrigin="true" OriginColor="33023" OriginStyle="0" OriginSize="1"/>
         <TitleStyle Text="" Color="0" Dock="true" Visible="false" FontName="Arial" FontSize="12" FontStyle="1" PositionX="0" PositionY="0"/>
-        <LegendStyle Visible="true" Transparency="0" Dock="true" DockPosition="2" PositionX="264" PositionY="264" BackColor="16777215" FontName="Arial" FontSize="8" FontStyle="0"/>
+        <LegendStyle Visible="true" Transparency="0" Dock="true" DockPosition="2" PositionX="72" PositionY="72" BackColor="16777215" FontName="Arial" FontSize="8" FontStyle="0"/>
         <GraphUnits Use_unit_time="false" Unit_time="3" Use_unit_E="false" Unit_E="0" Use_unit_I="false" Unit_I="1" Unit_I_div="0" Use_unit_Q="false" Unit_Q="1" Unit_Q_div="0" Use_unit_freq="false" Unit_freq="2" Use_unit_R="false" Unit_R="2" Unit_R_div="0" Use_unit_W="false" Unit_W="0" Unit_W_div="0" Use_unit_energy="false" Unit_energy="1" Unit_energy_div="0" CvtPotToRef2="false" Ref2Indx="0" Use_unit_capacity="false" Unit_capacity="2" Unit_capacity_div="0"/>
         <AxesStyle>
           <AxisStyle Axis="x-axis" Name="" ShortName="" DrawGrid="true" AxisEnabled="true" GridColor="12632256" GridStyle="0" Title="time/s" StartPos="0" EndPos="100" AutoScale="true" TitleAuto="true" Color="0" ScientNotation="false" Min="-20302,3779322242" Max="1468902,03113266" Inverted="false" ProcessID="0" ProcessExpr="" AutoScroll="false"/>
