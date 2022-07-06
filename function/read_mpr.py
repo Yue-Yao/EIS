@@ -39,7 +39,7 @@ def searchmpr(datapath='.'):
 def convertToPandasDF(mprfiles):
     # if only 1 file
     if isinstance(mprfiles, str):
-        cycle_start = mpr_file.split('Cycle')[1].split('_')[0].split('to')[0]#'raw_data\\Cell001_Form_20uA_25T_30RH_Cycle1to10_01_GEIS_CA1.mpr'
+        cycle_start = mprfiles.split('Cycle')[1].split('_')[0].split('to')[0]#'raw_data\\Cell001_Form_20uA_25T_30RH_Cycle1to10_01_GEIS_CA1.mpr'
         mpr_file = BioLogic.MPRfile(mprfiles)
         df = pd.DataFrame(mpr_file.data)
         #define 'loop_Nr' ,cycle_Nr
@@ -47,7 +47,7 @@ def convertToPandasDF(mprfiles):
         loop_Nr = np.zeros(loop_index[-1])
         cycle_Nr = np.zeros(loop_index[-1])
         loop = 0
-        cycle_Nr = cycle_start
+        cycle = int(cycle_start)
         for i in range(len(loop_index)-1):
             loop_Nr[loop_index[i]:loop_index[i+1]] = loop
             cycle_Nr[loop_index[i]:loop_index[i+1]] = cycle
