@@ -39,7 +39,7 @@ def searchmpr(datapath='.'):
 def convertToPandasDF(mprfiles):
     # if only 1 file
     if isinstance(mprfiles, str):
-        cycle_start = mprfiles.split('Cycle')[1].split('_')[0].split('to')[0]#'raw_data\\Cell001_Form_20uA_25T_30RH_Cycle1to10_01_GEIS_CA1.mpr'
+        cycle_start = mprfiles.split('Cycle')[1].split('_')[0].split('to')[0] #'raw_data\\Cell001_Form_20uA_25T_30RH_Cycle1to10_01_GEIS_CA1.mpr'
         mpr_file = BioLogic.MPRfile(mprfiles)
         df = pd.DataFrame(mpr_file.data)
         #define 'loop_Nr' ,cycle_Nr
@@ -62,30 +62,40 @@ def convertToPandasDF(mprfiles):
     
     # multiple files in a list
     mpr_files = []
-    cycle_start = mprfiles[0].split('Cycle')[1].split('_')[0].split('to')[0]# since currently all files share same cycle number, just take it once
     for file in mprfiles:
         mpr_files.append(BioLogic.MPRfile(file))
-    
+    cycle_start = mprfiles[0].split('Cycle')[1].split('_')[0].split('to')[0]# since currently all files share same cycle number, just take it once    
     dataframes = []
-    for convertedMPR in mpr_files:
-        df = pd.DataFrame(convertedMPR.data)
-        #define 'loop_Nr'
-        loop_index = convertedMPR.loop_index
-        loop_Nr = np.zeros(loop_index[-1])
-        cycle_Nr = np.zeros(loop_index[-1])
-        loop = 0
-        cycle = int(cycle_start)
-        for i in range(len(loop_index)-1):
-            loop_Nr[loop_index[i]:loop_index[i+1]] = loop
-            cycle_Nr[loop_index[i]:loop_index[i+1]] = cycle
-            loop +=1
-            cycle +=1
-        loop_Nr = np.array(loop_Nr,dtype='int')
-        cycle_Nr = np.array(cycle_Nr,dtype='int')
-        df['loop_Nr'] = loop_Nr
-        df['cycle_Nr'] = cycle_Nr
-        
-        dataframes.append(df)
+    if int(cycle_start) ==1:#form data
+        for convertedMPR in mpr_files:
+            df = pd.DataFrame(convertedMPR.data)
+            #define 'loop_Nr'
+            loop_index = convertedMPR.loop_index
+            loop_Nr = np.zeros(loop_index[-1])
+            cycle_Nr = np.zeros(loop_index[-1])
+            loop = 0
+            cycle = int(cycle_start)
+            for i in range(len(loop_index)-1):
+                loop_Nr[loop_index[i]:loop_index[i+1]] = loop
+                cycle_Nr[loop_index[i]:loop_index[i+1]] = cycle
+                loop +=1
+                cycle +=1
+            loop_Nr = np.array(loop_Nr,dtype='int')
+            cycle_Nr = np.array(cycle_Nr,dtype='int')
+            df['loop_Nr'] = loop_Nr
+            df['cycle_Nr'] = cycle_Nr
+            dataframes.append(df)
+    else:# cyc data
+        mpr_files = np.reshape(mpr_files,(-1,2))
+        for [eis,cpl] in mpr_files:
+            df_eis = pd.DataFrame(eis.data)
+            df_cpl = pd.DataFrame(cpl.data)
+            half_cycle = df_cpl['half cycle']
+            unique_half_cycle = np.unique(half_cycle)
+            df_cpl['half cycle'] = np.mod(half_cycle,2)
+            df_cpl['loop_Nr'] = np.floor_divide(half_cycle,2)%10
+            df_cpl['cycle_Nr'] = np.add(int(cycle_start) , np.floor_divide(half_cycle,2))
+            dataframes.append(df_cpl)
     return dataframes
 
 
