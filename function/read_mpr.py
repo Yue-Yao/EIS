@@ -90,12 +90,26 @@ def convertToPandasDF(mprfiles):
         for [eis,cpl] in mpr_files:
             df_eis = pd.DataFrame(eis.data)
             df_cpl = pd.DataFrame(cpl.data)
-            half_cycle = df_cpl['half cycle']
+            half_cycle = df_cpl['half cycle'].copy()
             unique_half_cycle = np.unique(half_cycle)
-            df_cpl['half cycle'] = np.mod(half_cycle,2)
-            df_cpl['loop_Nr'] = np.floor_divide(half_cycle,2)%10
-            df_cpl['cycle_Nr'] = np.add(int(cycle_start) , np.floor_divide(half_cycle,2))
+            df_cpl['half cycle'] = np.mod(half_cycle,2)#[0,1,2,3,4,5] to [0,1,0,1,0,1]
+            df_cpl['loop_Nr'] = np.floor_divide(half_cycle,2)%10#[0,1,2,3,4,5,6,7,8,9,0,1,2,3,4...]
+            df_cpl['cycle_Nr'] = np.add(int(cycle_start) , np.floor_divide(half_cycle,2))#[0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+            #eis time index
+            eis_index = np.where(df_eis['freq/Hz'][:-1].values<df_eis['freq/Hz'][1:].values)[0]
+            first_index = 0 
+            cycle_Nr = int(cycle_start)
+            cycle_array = np.zeros(len(df_eis))
+            for end_index in eis_index:
+                cycle_array[first_index:end_index+1] = cycle_Nr
+                cycle_Nr +=10 #every 10 loop apply one eis
+                first_index = end_index
+            cycle_array[end_index+1:] = cycle_Nr
+            cycle_array = np.array(cycle_array,dtype='int')
+            df_eis['cycle_Nr'] = cycle_array
+            dataframes.append(df_eis)
             dataframes.append(df_cpl)
+            
     return dataframes
 
 
