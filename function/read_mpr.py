@@ -103,7 +103,7 @@ def convertToPandasDF(mprfiles):
             for end_index in eis_index:
                 cycle_array[first_index:end_index+1] = cycle_Nr
                 cycle_Nr +=10 #every 10 loop apply one eis
-                first_index = end_index
+                first_index = end_index+1
             cycle_array[end_index+1:] = cycle_Nr
             cycle_array = np.array(cycle_array,dtype='int')
             df_eis['cycle_Nr'] = cycle_array
